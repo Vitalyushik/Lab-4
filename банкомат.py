@@ -63,7 +63,25 @@ def convert_to_words(number):
         
     return words
 
-
+def convert_currency(number):
+    number_str = str(number)
+    if len(number_str) >= 2:
+        if number_str[-1] == '1':
+            if number_str[-2] == '1':
+                return 'рублей'
+            else:
+                return 'рубль'
+        elif number_str[-1] in a:
+            return 'рубля'
+        else:
+            return 'рублей'
+    else:
+        if number_str[-1] == '1':
+            return 'рубль'
+        elif number_str[-1] in a:
+            return 'рубля'
+        else:
+            return 'рублей'
 
 
     
