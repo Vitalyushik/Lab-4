@@ -62,27 +62,39 @@ def convert_to_words(number):
         words = hundreds[number // 100000] + ' тысяч'
         
     return words
-
+a = ('2', '3', '4')
 def convert_currency(number):
     number_str = str(number)
-    if len(number_str) >= 2:
-        if number_str[-1] == '1':
-            if number_str[-2] == '1':
-                return 'рублей'
+    if number < 100001:
+        if len(number_str) >= 2:
+            if number_str[-1] == '1':
+                if number_str[-2] == '1':
+                    return 'рублей'
+                else:
+                    return 'рубль'
+            elif number_str[-1] in a:
+                return 'рубля'
             else:
+                return 'рублей'
+        else:
+            if number_str[-1] == '1':
                 return 'рубль'
-        elif number_str[-1] in a:
-            return 'рубля'
-        else:
-            return 'рублей'
-    else:
-        if number_str[-1] == '1':
-            return 'рубль'
-        elif number_str[-1] in a:
-            return 'рубля'
-        else:
-            return 'рублей'
-
+            elif number_str[-1] in a:
+                return 'рубля'
+            else:
+                return 'рублей'
+def main():
+    while True:
+        try:
+            number = int(input('Введите число от 0 до 100 000: '))
+            print(convert_to_words(number) + ' ' +convert_currency(number))
+            break
+        except:
+            print ("Введенное значение не находится в диапазоне чисел от 0 до 100000, попробуйте снова.")
+        
+            
+            
+main()
 
     
    
